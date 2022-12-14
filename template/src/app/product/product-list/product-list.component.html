@@ -1,0 +1,70 @@
+<div class="col-xl-12 col-md-3" ngbDropdown>
+  <app-card cardTitle="Products" cardClass="table-card" blockClass="p-0">
+    <br>
+
+    <div class=" col-md-3" class="input-group"  style="width: 50%;height: 20%;position: relative;left: 3%;">
+      <input type="search"  style="background-color: #F5F5F5" class="form-control rounded" placeholder="Search Product ID" aria-label="Search" aria-describedby="search-addon" />
+      <button type="button"  class="btn btn-primary b1" >search</button>
+      <button   style="float: right;position: relative;left: 87%;border-radius: 7%"type="button"  routerLink="/products/product-create" class="btn btn-primary b2"  >New Product</button>
+
+    </div>
+
+
+<hr>
+    <br>
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+        <tr>
+          <th>
+            <div class="chk-option">
+              <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-label"></span>
+              </label>
+            </div>
+            Product SKU
+          </th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th class="text-right">Price</th>
+          <th class="text-right">Status</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of products index as i ">
+          <td>
+            <div class="chk-option">
+              <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                <input type="checkbox" class="custom-control-input">
+                <span class="custom-control-label"></span>
+              </label>
+            </div>
+            <div class="d-inline-block align-middle">
+              <div class="d-inline-block">
+                <h6>{{p.sku}}</h6>
+              </div>
+            </div>
+          </td>
+          <td>{{p.name}} </td>
+          <td>Sanitizer</td>
+          <td>{{p.stockQuantity}}</td>
+          <td class="text-right">{{p.costPrice}}</td>
+
+          <td class="text-right"><label class="badge badge-light-success">Active</label>          </td>
+
+         <td> <button type="button" class="btn btn-icon btn-outline-danger"><i class="feather icon-trash"></i></button>
+           &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-warning"><i class="feather icon-edit"></i></button>
+
+         </td>
+
+
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
+
+

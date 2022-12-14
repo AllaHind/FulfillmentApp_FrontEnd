@@ -1,0 +1,59 @@
+<div class="col-xl-12 col-md-3" ngbDropdown>
+  <button  style="position: relative;bottom: 70px;right: 20px;border-radius: 60px;" class="btn btn-primary  previous-btn" routerLink="/products/product-list">  <i  class="fa fa-arrow-circle-left"></i></button>
+
+  <app-card cardTitle="&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Add Product" [options]="false">
+
+          <div class="row">
+            <div class="col-md-6">
+              <form action="javascript:">
+                <div class="form-group">
+                  <label >Name</label>
+                  <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Product Name">
+                </div>
+                <div class="form-group">
+                  <label >SKU</label>
+                  <i class="fa fa-info-circle"
+                     title="Stock keeping unit"></i>
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Product SKU">
+                </div>
+                <div class="form-group">
+                  <label >Category</label>
+                  <select  class="form-control" name="type"  >
+                    <option disabled selected>Choose...</option>
+                    <option></option>
+                  </select>                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Description</label>
+                  <textarea placeholder="Write a description about the product ..." class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <form action="javascript:">
+                <div class="form-group">
+                  <label>Selling price</label>
+                  <input type="number" class="form-control" placeholder="Enter selling price">
+                </div>
+                <div class="form-group">
+                  <label >Cost price</label>
+                  <input type="number" class="form-control" placeholder="Enter cost price">
+
+                </div>
+                <div class="form-group">
+                  <label>Stock Quantity</label>
+                  <input type="number" class="form-control" placeholder="Enter stock quantity">
+
+                </div>
+                <div class="form-group">
+                  <label>Supply Level</label>
+                  <input type="number" class="form-control" placeholder="Enter Supply Level">
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+              </form>
+            </div>
+          </div>
+  </app-card>
+
+</div>
