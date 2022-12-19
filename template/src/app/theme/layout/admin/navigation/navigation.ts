@@ -95,7 +95,7 @@ const NavigationItems = [
     title: 'Customers',
     type: 'item',
     icon: 'feather icon-user',
-    url: '/tbl-bootstrap/bt-basc',
+    url: '/customers/customer-list',
     classes: 'nav-item',
   },
     {

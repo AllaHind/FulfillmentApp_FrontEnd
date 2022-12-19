@@ -1,0 +1,78 @@
+<div class="col-xl-12 col-md-3" ngbDropdown style="position: relative;bottom: 100px">
+  <button  (click)="goBack()" style="position: relative;top: 10px;right: 20px;border-radius: 60px;" class="btn btn-primary  previous-btn">  <i  class="fa fa-arrow-circle-left"></i></button>
+
+  <app-card cardTitle="&nbsp; &nbsp; Product Details " [options]="false">
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.name}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">SKU</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+   {{product.sku}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Category</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Cost Price</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.costPrice}}            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Selling Price</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.sellingPrice}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Stock Quantity</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.stockQuantity}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Supply Level</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.supplyLevel}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-card>
+</div>

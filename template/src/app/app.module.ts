@@ -36,6 +36,9 @@ import { OrderListComponent } from './order/order-list/order-list.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import {HttpClientModule} from "@angular/common/http";
     PackageListComponent,
     OrderListComponent,
     CustomerListComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductDetailsComponent,
+    CustomerCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,7 @@ import {HttpClientModule} from "@angular/common/http";
     NgbTabsetModule,
     NgbModule.forRoot(),
     HttpClientModule,
-
+   FormsModule
 
   ],
   providers: [NavigationItem],

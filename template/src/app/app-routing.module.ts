@@ -5,6 +5,9 @@ import {AuthComponent} from './theme/layout/auth/auth.component';
 import {ProductListComponent} from './product/product-list/product-list.component';
 import {PackageListComponent} from './packages/package-list/package-list.component';
 import {ProductCreateComponent} from "./product/product-create/product-create.component";
+import {ProductDetailsComponent} from "./product/product-details/product-details.component";
+import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
+import {CustomerCreateComponent} from "./customer/customer-create/customer-create.component";
 
 const routes: Routes = [
   {
@@ -31,6 +34,22 @@ const routes: Routes = [
           {
             path: 'product-create',
             component: ProductCreateComponent
+          },
+          {
+            path: 'product-details/:sku',
+            component: ProductDetailsComponent
+          }
+          ]},
+      {
+        path: 'customers',
+
+        children : [
+          {
+            path: 'customer-list',
+            component: CustomerListComponent
+          }, {
+            path: 'customer-create',
+            component: CustomerCreateComponent
           },
           ]},
       {
