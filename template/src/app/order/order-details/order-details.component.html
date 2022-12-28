@@ -1,0 +1,127 @@
+<div class="col-xl-12 col-md-3" ngbDropdown style="position: relative;bottom: 100px">
+  <button   style="position: relative;top: 10px;right: 20px;border-radius: 60px;" class="btn btn-primary  previous-btn">  <i  class="fa fa-arrow-circle-left"></i></button>
+
+  <app-card cardTitle="&nbsp; &nbsp; Order Details " [options]="false">
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <h3 class="mb-0">Order°</h3>
+            </div>
+            <h3 class="col-sm-9 text-secondary">
+              {{order.code}}
+            </h3>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Customer</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">{{order.customer.code}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Order Date</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{order.orderDate | date: 'dd/MM/yyyy hh:mm a'}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Shipped At :</h6>
+            </div>
+            <div class="col-sm-9 text-secondary" *ngIf="order.shippedAt==null">-----
+
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Delivered At :</h6>
+            </div>
+            <div class="col-sm-9 text-secondary" *ngIf="order.deliveredAt==null">-----
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Shipping Address</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                 {{order.shippingAddress}}   </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Total price</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{order.totalPrice}} <b>MAD</b>
+
+            </div>
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Order Items</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">SKU</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let oi of ordersItem">
+                  <td>{{oi.product.name}}</td>
+
+                  <td><a href="/products/product-details/{{oi.product.sku}} ">{{oi.product.sku}}</a></td>
+                  <td>{{oi.quantity}}</td>
+                  <td>{{oi.product.sellingPrice}}<b> MAD</b></td>
+
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Status</h6>
+            </div>
+
+            <div style="position:relative;bottom: 16px" class="form-group">
+              <select  [(ngModel)]="order.status" class="form-control" name="type"  >
+                <option  [value]="order.status">{{order.status}}</option>
+                <option *ngIf="order.status!='PENDING'">PENDING</option>
+                <option *ngIf="order.status!='SHIPPED'">SHIPPED</option>
+                <option *ngIf="order.status!='DELIVERED'">DELIVERED</option>
+              </select>
+            </div>
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <a class="btn btn-info " routerLink="/products/product-create">Create a package</a>
+              &nbsp; &nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-card>
+</div>

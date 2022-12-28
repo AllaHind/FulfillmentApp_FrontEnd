@@ -8,6 +8,8 @@ import {ProductCreateComponent} from "./product/product-create/product-create.co
 import {ProductDetailsComponent} from "./product/product-details/product-details.component";
 import {CustomerListComponent} from "./customer/customer-list/customer-list.component";
 import {CustomerCreateComponent} from "./customer/customer-create/customer-create.component";
+import {OrderListComponent} from "./order/order-list/order-list.component";
+import {OrderDetailsComponent} from "./order/order-details/order-details.component";
 
 const routes: Routes = [
   {
@@ -50,6 +52,17 @@ const routes: Routes = [
           }, {
             path: 'customer-create',
             component: CustomerCreateComponent
+          },
+          ]}, {
+        path: 'orders',
+
+        children : [
+          {
+            path: 'order-list',
+            component: OrderListComponent
+          }, {
+            path: 'order-detail/:code',
+            component: OrderDetailsComponent
           },
           ]},
       {

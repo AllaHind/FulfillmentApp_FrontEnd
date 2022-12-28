@@ -12,10 +12,9 @@ export class ProductDetailsComponent implements OnInit {
   public id: string;
 
   constructor(private productService: ProductService,private actRoute: ActivatedRoute,private router: Router) { }
-
   ngOnInit(): void {
-
-    this.productService.findById('ZP001E4');
+    this.id = this.actRoute.snapshot.paramMap.get('sku');
+    this.productService.findById(this.id);
 console.log(this.product.name) ;
   }
   get product(): Product {
@@ -27,4 +26,6 @@ console.log(this.product.name) ;
     this.router.navigateByUrl('/products/product-list');
 
   }
+
+
 }

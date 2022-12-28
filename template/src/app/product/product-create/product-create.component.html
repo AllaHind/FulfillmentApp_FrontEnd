@@ -18,10 +18,11 @@
                 </div>
                 <div class="form-group">
                   <label >Category</label>
-                  <select  class="form-control" name="type"  >
+                  <select  [(ngModel)]="product.category.label" class="form-control" name="type"  >
                     <option disabled selected>Choose...</option>
-                    <option></option>
-                  </select>                </div>
+                    <option *ngFor="let c of categories" [value]="c.label">{{c.label}}</option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label>Description</label>
                   <textarea placeholder="Write a description about the product ..." class="form-control" [(ngModel)]="product.description" name="description"  rows="3"></textarea>

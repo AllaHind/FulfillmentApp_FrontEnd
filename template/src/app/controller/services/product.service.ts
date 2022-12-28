@@ -49,6 +49,11 @@ export class ProductService {
     _clone.costPrice = product.costPrice;
     _clone.stockQuantity = product.stockQuantity;
     _clone.supplyLevel = product.supplyLevel;
+    _clone.status = product.status;
+    _clone.weight = product.weight;
+    _clone.volume = product.volume;
+    _clone.category = product.category;
+    _clone.category.label = product.category.label;
 
     return _clone;
   }
@@ -128,14 +133,13 @@ export class ProductService {
     this.index = index;
   }
 
-  public findById(sku: string)
-  {
+  public findById(sku: string) {
 
 
-    this.http.get<Product>('http://localhost:8080/api/v1/products/' + 'ZP001E4').subscribe(
+    this.http.get<Product>('http://localhost:8080/api/v1/products/' + sku).subscribe(
       data => {
-         console.log("khdmat")
-        this._product = data;
+         console.log('khdmat');
+         this._product = data;
       },
       error => {
         console.log('erreur');
@@ -147,7 +151,7 @@ export class ProductService {
 
 
   }
-  public findByAttributes(x:string) {
+  public findByAttributes(x: string) {
     this.http.get<Array<Product>>('http://localhost:8080/api/v1/products/findByAttributes/' + x).subscribe(
       data => {
         this._products = data;

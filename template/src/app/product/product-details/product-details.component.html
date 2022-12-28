@@ -28,12 +28,14 @@
               <h6 class="mb-0">Category</h6>
             </div>
             <div class="col-sm-9 text-secondary">
+              {{product.category.label}}
             </div>
           </div>
           <hr>
+
           <div class="row">
             <div class="col-sm-3">
-              <h6 class="mb-0">Cost Price</h6>
+              <h6 class="mb-0">Cost Price <span class="text-primary">(MAD)</span></h6>
             </div>
             <div class="col-sm-9 text-secondary">
               {{product.costPrice}}            </div>
@@ -41,7 +43,7 @@
           <hr>
           <div class="row">
             <div class="col-sm-3">
-              <h6 class="mb-0">Selling Price</h6>
+              <h6 class="mb-0">Selling Price <span class="text-primary">(MAD)</span></h6>
             </div>
             <div class="col-sm-9 text-secondary">
               {{product.sellingPrice}}
@@ -52,10 +54,14 @@
             <div class="col-sm-3">
               <h6 class="mb-0">Stock Quantity</h6>
             </div>
-            <div class="col-sm-9 text-secondary">
+            <div *ngIf="product.stockQuantity<=product.supplyLevel" class="col-sm-9 text-danger font-weight-bold">
+              {{product.stockQuantity}}
+            </div>
+            <div *ngIf="product.stockQuantity>product.supplyLevel" class="col-sm-9 text-secondary" >
               {{product.stockQuantity}}
             </div>
           </div>
+
           <hr>
           <div class="row">
             <div class="col-sm-3">
@@ -67,8 +73,23 @@
           </div>
           <hr>
           <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Status</h6>
+            </div>
+            <div *ngIf="product.status=='OUT_OF_STOCK'"  >
+              <label class="badge badge-light-danger">Out Of Stock</label>
+            </div>
+            <div *ngIf="product.status=='IN_STOCK'"  >
+              <label class="badge badge-light-success">In Stock</label>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
             <div class="col-sm-12">
-              <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+              <a class="btn btn-info " routerLink="/products/product-create">Edit</a>
+              &nbsp; &nbsp;
+              <a class="btn btn-danger " >DELETE</a>
+
             </div>
           </div>
         </div>

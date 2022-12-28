@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../controller/services/product.service";
 import {Product} from "../../controller/models/product";
 import {Router} from "@angular/router";
+import {CategoryService} from "../../controller/services/category.service";
+import {Category} from "../../controller/models/category";
 
 @Component({
   selector: 'app-product-create',
@@ -11,11 +13,14 @@ import {Router} from "@angular/router";
 export class ProductCreateComponent implements OnInit {
 
 
-  constructor(public productService: ProductService,private  router:Router) { }
+  constructor(public productService: ProductService,private  router:Router,private categoryService:CategoryService) { }
 
   ngOnInit(): void {
+    this.findCategory();
   }
-
+  get categories(): Array<Category>{
+    return  this.categoryService.categories;
+  }
   get product(): Product {
     return this.productService.product;
   }
@@ -31,6 +36,11 @@ goBack()
 
   this.router.navigateByUrl('/products/product-list');
 
+}
+
+findCategory()
+{
+  return this.categoryService.categoryList();
 }
 
 }

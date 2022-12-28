@@ -78,7 +78,7 @@ const NavigationItems = [
         id: 'Orders',
         title: 'Orders',
         type: 'item',
-        url: '/forms/basic',
+        url: '/orders/order-list',
         classes: 'nav-item',
         icon: 'feather icon-shopping-cart'
       },

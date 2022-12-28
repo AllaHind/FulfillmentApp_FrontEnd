@@ -39,6 +39,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
+import { OrderDetailsComponent } from './order/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { CustomerCreateComponent } from './customer/customer-create/customer-cre
     CustomerListComponent,
     ProductCreateComponent,
     ProductDetailsComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
