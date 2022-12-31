@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ export class ProductService {
   public isCreateFailed = false;
   public isCreateSucessed = false;
   private index: number;
-
-  public local_url: 'http://localhost:8080/api/v1/products';
   public successMessage: string;
+  public nbr: number;
+  private postResponse: Object;
   constructor(private http: HttpClient) {
   }
 
@@ -161,6 +162,25 @@ export class ProductService {
         console.log('erreur');
       }
     );
+  }
+public out_of_stock() {
+  this.http.get<number>('http://localhost:8080/api/v1/products/outOfStock').subscribe(
+    data => {
+
+    this.nbr = data;
+
+},
+error => {
+  console.log('erreur');
+}
+);
+
+}
+
+  fetchProfileImage(sku:string): Observable<Blob> {
+    let url = 'http://localhost:8080/api/v1/products/qrcode/' +sku;
+
+    return this.http.get(url, { responseType: 'blob' });
   }
 
 

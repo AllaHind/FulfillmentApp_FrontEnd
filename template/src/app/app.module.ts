@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './theme/shared/shared.module';
@@ -35,11 +35,13 @@ import { PackageListComponent } from './packages/package-list/package-list.compo
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
-import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
 import { OrderDetailsComponent } from './order/order-details/order-details.component';
+import {NgxBarcodeModule} from 'ngx-barcode';
+import {BarcodeGeneratorAllModule, BarcodeGeneratorModule} from '@syncfusion/ej2-angular-barcode-generator';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,6 @@ import { OrderDetailsComponent } from './order/order-details/order-details.compo
     NavItemComponent,
     NavBarComponent,
     NavLeftComponent,
-
     NavSearchComponent,
     NavRightComponent,
     ConfigurationComponent,
@@ -78,10 +79,12 @@ import { OrderDetailsComponent } from './order/order-details/order-details.compo
     NgbTabsetModule,
     NgbModule.forRoot(),
     HttpClientModule,
-   FormsModule
+    FormsModule,
+    BarcodeGeneratorModule
 
   ],
   providers: [NavigationItem],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

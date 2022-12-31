@@ -41,7 +41,7 @@
           <td>{{p.name}} </td>
           <td>{{p.category.label}}</td>
           <td>{{p.stockQuantity}}</td>
-          <td class="text-right">{{p.costPrice}}</td>
+          <td class="text-right">{{p.costPrice}} <b> MAD</b></td>
 
           <td *ngIf="p.status=='OUT_OF_STOCK'" class="text-right"><label class="badge badge-light-danger">Out Of Stock</label>          </td>
           <td *ngIf="p.status=='IN_STOCK'" class="text-right"><label class="badge badge-light-success">In Stock</label>          </td>

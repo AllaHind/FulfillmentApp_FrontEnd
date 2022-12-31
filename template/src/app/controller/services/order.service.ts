@@ -19,6 +19,7 @@ export class OrderService {
   public isCreateSucessed = false;
   private index: number;
   public successMessage: string;
+  public nbr: number;
   constructor(private http: HttpClient) {
   }
 
@@ -165,6 +166,21 @@ public findOrderitem(code: string)
     data => {
 
       this._ordersItem = data;
+
+    },
+    error => {
+      console.log('erreur');
+    }
+  );
+
+}
+
+public pendingOrder()
+{
+  this.http.get<number>('http://localhost:8080/api/v1/orders/orderPending').subscribe(
+    data => {
+
+      this.nbr = data;
 
     },
     error => {
