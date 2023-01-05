@@ -67,6 +67,15 @@ const NavigationItems = [
         classes: 'nav-item'
       }]
     },
+    {
+
+      id: 'Location',
+      title: 'Location',
+      type: 'item',
+      url: '/location/location-list',
+      icon: 'feather icon-navigation',
+      classes: 'nav-item',
+    },
   ]},
   {
   id: 'Sales',

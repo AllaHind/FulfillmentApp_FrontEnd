@@ -2,8 +2,11 @@
   <button   style="position: relative;top: 10px;right: 20px;border-radius: 60px;" class="btn btn-primary  previous-btn">  <i  class="fa fa-arrow-circle-left"></i></button>
 
   <app-card cardTitle="&nbsp; &nbsp; Order Details " [options]="false">
-    <div class="col-md-8">
+    <div class="col-md-8" >
+
       <div class="card mb-3">
+        <div id="htmlData">
+
         <div class="card-body">
           <div class="row">
             <div class="col-sm-3">
@@ -69,17 +72,19 @@
 
           <hr>
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-5">
               <h6 class="mb-0">Order Items</h6>
             </div>
             <div class="col-sm-9 text-secondary">
-              <table class="table table-striped">
+              <table class="table table-striped" >
                 <thead>
                 <tr>
                   <th scope="col">Product</th>
                   <th scope="col">SKU</th>
                   <th scope="col">Quantity</th>
                   <th scope="col">Price</th>
+                  <th scope="col">BarCode</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -89,23 +94,26 @@
                   <td><a href="/products/product-details/{{oi.product.sku}} ">{{oi.product.sku}}</a></td>
                   <td>{{oi.quantity}}</td>
                   <td>{{oi.product.sellingPrice}}<b> MAD</b></td>
-
+                  <td><img style="width: 100px;height: 100px" [src]="imageToShow"></td>
                 </tr>
                 </tbody>
               </table>
 
             </div>
           </div>
+        </div>
+        </div>
+        <hr>
 
-          <hr>
-          <div class="row">
+        <div class="row">
             <div class="col-sm-3">
               <h6 class="mb-0">Status</h6>
             </div>
 
             <div style="position:relative;bottom: 16px" class="form-group">
               <select  [(ngModel)]="order.status" class="form-control" name="type"  >
-                <option  [value]="order.status">{{order.status}}</option>
+                <option  [value]="order.status" *ngIf="order.status=='READY_TO_SHIP'">READY TO SHIP</option>
+                <option  [value]="order.status" *ngIf="order.status!='READY_TO_SHIP'">{{order.status}}</option>
                 <option *ngIf="order.status!='PENDING'">PENDING</option>
                 <option *ngIf="order.status!='SHIPPED'">SHIPPED</option>
                 <option *ngIf="order.status!='DELIVERED'">DELIVERED</option>
@@ -117,10 +125,13 @@
           <div class="row">
             <div class="col-sm-12">
               <a class="btn btn-info " routerLink="/products/product-create">Create a package</a>
+
               &nbsp; &nbsp;
+                <button class="btn btn-success" (click)="openPDF()">Order Picking <i class="feather icon-printer"></i>
+                </button>
             </div>
+
           </div>
-        </div>
       </div>
     </div>
   </app-card>

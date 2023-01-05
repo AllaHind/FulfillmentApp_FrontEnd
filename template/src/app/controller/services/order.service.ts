@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Order} from "../models/order";
 import {OrderItem} from "../models/order-item";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -165,7 +166,7 @@ public findOrderitem(code: string)
   this.http.get<Array<OrderItem>>('http://localhost:8080/api/v1/orders/orderItem/' + code).subscribe(
     data => {
 
-      this._ordersItem = data;
+     return this._ordersItem = data;
 
     },
     error => {

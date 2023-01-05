@@ -41,7 +41,13 @@ import { ProductDetailsComponent } from './product/product-details/product-detai
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
 import { OrderDetailsComponent } from './order/order-details/order-details.component';
 import {NgxBarcodeModule} from 'ngx-barcode';
-import {BarcodeGeneratorAllModule, BarcodeGeneratorModule} from '@syncfusion/ej2-angular-barcode-generator';
+import {
+  BarcodeGeneratorAllModule,
+  BarcodeGeneratorModule,
+  DataMatrixGeneratorAllModule
+} from '@syncfusion/ej2-angular-barcode-generator';
+import { LocationListComponent } from './location/location-list/location-list.component';
+import { LocationCreateComponent } from './location/location-create/location-create.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +72,9 @@ import {BarcodeGeneratorAllModule, BarcodeGeneratorModule} from '@syncfusion/ej2
     ProductCreateComponent,
     ProductDetailsComponent,
     CustomerCreateComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    LocationListComponent,
+    LocationCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -80,8 +88,8 @@ import {BarcodeGeneratorAllModule, BarcodeGeneratorModule} from '@syncfusion/ej2
     NgbModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    BarcodeGeneratorModule
-
+    BarcodeGeneratorModule,
+    DataMatrixGeneratorAllModule
   ],
   providers: [NavigationItem],
   bootstrap: [AppComponent],

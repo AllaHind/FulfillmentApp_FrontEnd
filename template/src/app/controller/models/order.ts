@@ -13,4 +13,5 @@ export class Order {
    status: string;
   shippedAt: number;
    deliveredAt: number;
+
 }

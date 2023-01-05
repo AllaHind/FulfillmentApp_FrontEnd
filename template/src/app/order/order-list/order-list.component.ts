@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
+import html2canvas from 'html2canvas';
 
 import {OrderService} from '../../controller/services/order.service';
 import {Order} from "../../controller/models/order";
+import * as jsPDF from "jspdf";
 
 @Component({
   selector: 'app-order-list',
@@ -10,6 +12,7 @@ import {Order} from "../../controller/models/order";
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
+
   constructor(public orderService: OrderService,private router:Router) { }
 
   ngOnInit(): void {

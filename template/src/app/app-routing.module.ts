@@ -10,6 +10,8 @@ import {CustomerListComponent} from "./customer/customer-list/customer-list.comp
 import {CustomerCreateComponent} from "./customer/customer-create/customer-create.component";
 import {OrderListComponent} from "./order/order-list/order-list.component";
 import {OrderDetailsComponent} from "./order/order-details/order-details.component";
+import {LocationListComponent} from "./location/location-list/location-list.component";
+import {LocationCreateComponent} from "./location/location-create/location-create.component";
 
 const routes: Routes = [
   {
@@ -36,6 +38,23 @@ const routes: Routes = [
           {
             path: 'product-create',
             component: ProductCreateComponent
+          },
+          {
+            path: 'product-details/:sku',
+            component: ProductDetailsComponent
+          }
+          ]},
+      {
+        path: 'location',
+
+        children : [
+          {
+            path: 'location-list',
+            component: LocationListComponent
+          },
+          {
+            path: 'location-create',
+            component: LocationCreateComponent
           },
           {
             path: 'product-details/:sku',

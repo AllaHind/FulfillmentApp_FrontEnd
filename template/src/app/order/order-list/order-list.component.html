@@ -19,7 +19,7 @@
             <ng-template ngbTabContent>
               <app-card [hidHeader]="true" cardClass="tab-card">
                 <div class="table-responsive">
-                  <table class="table table-hover mb-0">
+                  <table class="table table-hover mb-0" id="htmlData">
                     <thead>
                     <tr>
                       <th>
@@ -44,7 +44,8 @@
                       <td>{{o.customer.code}}</td>
                       <td>{{o.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
                       <td>{{o.totalPrice}} <b>MAD</b></td>
-                      <td *ngIf="o.status=='PENDING'"><label class="badge badge-light-warning">Pending</label>         </td>
+                      <td *ngIf="o.status=='PENDING'"><label class="badge badge-light-warning">Pending</label></td>
+                      <td *ngIf="o.status=='READY_TO_SHIP'"><label class="badge badge-light-success">READY TO SHIP</label></td>
 
 
                       <td>
@@ -76,6 +77,7 @@
                       <th>Total Price</th>
                       <th>Status</th>
                       <th></th>
+                      <th> </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -91,8 +93,52 @@
                       <td>{{o.customer.code}}</td>
                       <td>{{o.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
                       <td>{{o.totalPrice}} <b>MAD</b></td>
-                      <td *ngIf="o.status=='PENDING'"><label class="badge badge-light-warning">Pending</label>         </td>
+                      <td *ngIf="o.status=='PENDING'"><label class="badge badge-light-warning">Pending</label></td>
+                      <td>
+                        &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-success" (click)="detail(o.code)"><i class="feather icon-zoom-in" title="Details"></i></button>
 
+                      </td>
+                    </tr>
+                    </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+
+              </app-card>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="READY TO SHIP ORDERS">
+            <ng-template ngbTabContent>
+              <app-card [hidHeader]="true" cardClass="tab-card">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                    <tr>
+                      <th>
+                        Order°
+                      </th>
+                      <th>Customer</th>
+                      <th>Order date</th>
+                      <th>Total Price</th>
+                      <th>Status</th>
+                      <th></th>
+                      <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ng-container *ngFor="let o of orders index as i ">
+                    <tr  *ngIf="o.status == 'READY_TO_SHIP'">
+                      <td>
+                        <div class="d-inline-block align-middle">
+                          <div class="d-inline-block">
+                            <h6>{{o.code}} </h6>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{o.customer.code}}</td>
+                      <td>{{o.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                      <td>{{o.totalPrice}} <b>MAD</b></td>
+                      <td *ngIf="o.status=='READY_TO_SHIP'"><label class="badge badge-light-success">READY TO SHIP</label></td>
 
                       <td>
                         &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-success" (click)="detail(o.code)"><i class="feather icon-zoom-in" title="Details"></i></button>
@@ -107,20 +153,7 @@
               </app-card>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="DELIVERED ORDERS">
 
-
-            <ng-template ngbTabContent>
-              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="CANCELLED ORDERS">
-
-
-            <ng-template ngbTabContent>
-              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-            </ng-template>
-          </ngb-tab>
 
         </ngb-tabset>
     </div>
