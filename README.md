@@ -9,7 +9,7 @@ Angular Application - Order Management System
 
 ![image](https://user-images.githubusercontent.com/79708292/211173293-05d3e296-898c-41e1-a799-a41ac4d1bfb2.png)
 
-![image](https://user-images.githubusercontent.com/79708292/211173328-4f4f1ad4-34f2-4bdc-aee4-d61c8c77d08c.png)
+![image](https://user-images.githubusercontent.com/79708292/211173424-97c13708-2feb-4030-8f72-1673b2acf593.png)
 
 * Delete Location 
 
