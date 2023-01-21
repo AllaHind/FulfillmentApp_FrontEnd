@@ -1,0 +1,87 @@
+<div class="col-xl-12 col-md-3" ngbDropdown style="position: relative;bottom: 100px">
+  <button  style="position: relative;top: 10px;right: 20px;border-radius: 60px;" class="btn btn-primary  previous-btn" (click)="goBack()">  <i  class="fa fa-arrow-circle-left"></i></button>
+
+  <app-card cardTitle="&nbsp; &nbsp; Add Product" [options]="false">
+    <form>
+          <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                  <label >Name</label>
+                  <input id="name" required minlength="4" type="text" [(ngModel)]="product.name" name="name" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Product Name">
+                </div>
+                <div class="form-group">
+                  <label >SKU</label>
+                  <i class="fa fa-info-circle"
+                     title="Stock keeping unit"></i>
+                  <input   type="text" class="form-control" [(ngModel)]="product.sku" name="sku"  placeholder="Enter Product SKU">
+                </div>
+                <div class="form-group">
+                  <label >Category</label>
+                  <select  [(ngModel)]="product.category.label" class="form-control" name="type"  >
+                    <option  selected disabled>Choose...</option>
+                    <option *ngFor="let c of categories" [value]="c.label">{{c.label}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea placeholder="Write a description about the product ..." class="form-control" [(ngModel)]="product.description" name="description"  rows="3"></textarea>
+                </div>
+              <div class="form-group">
+                  <label>Location</label>
+                <select [disabled]="checkbox.checked" id="slct" [(ngModel)]="product.locations" class="form-control" name="location"  >
+                  <option  selected disabled>Choose...</option>
+                  <option *ngFor="let l of locations" [value]="l.code">{{l.code}}</option>
+                </select>
+                <div class="form-check">
+                  <input class="form-check-input" #checkbox type="checkbox" value="" id="flexCheckChecked" >
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Set Default Location
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>Selling price</label>
+                  <input type="number" [(ngModel)]="product.sellingPrice" name="sellingPrice" class="form-control" placeholder="Enter selling price">
+                </div>
+              <div class="form-group">
+                <label >Cost price</label>
+                <input type="number" [(ngModel)]="product.costPrice" name="costPrice" class="form-control" placeholder="Enter cost price">
+
+              </div>
+              <div class="form-group">
+                  <label>Volume </label>
+                  <input type="number" [(ngModel)]="product.volume" name="volume" class="form-control" placeholder="Enter product volume (cm3)">
+                </div>
+              <div class="form-group">
+                  <label>Weight</label>
+                  <input type="number" [(ngModel)]="product.weight" name="weight" class="form-control" placeholder="Enter product weight (g)">
+                </div>
+
+                <div class="form-group">
+                  <label>Stock Quantity</label>
+                  <input type="number"  [(ngModel)]="product.stockQuantity" name="stockQuantity" class="form-control" placeholder="Enter stock quantity">
+
+                </div>
+                <div class="form-group">
+                  <label>Supply Level</label>
+                  <input type="number" class="form-control" [(ngModel)]="product.supplyLevel" name="supplyLevel" placeholder="Enter Supply Level">
+
+                </div>
+              <div class="alert alert-danger" role="alert" *ngIf="productService.isCreateFailed==true">
+                {{ this.productService.errorMessage }}
+              </div>
+              <div class="alert alert-success "  role="alert" *ngIf="productService.isCreateSucessed==true">
+                {{ this.productService.successMessage }}
+              </div>
+                <button type="submit" (click)="save()" class="btn btn-primary">Submit</button>
+
+
+            </div>
+          </div>
+    </form>
+  </app-card>
+
+</div>

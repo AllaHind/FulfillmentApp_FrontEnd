@@ -1,0 +1,56 @@
+<div class="col-xl-12 col-md-3" ngbDropdown>
+  <app-card cardTitle="Products" cardClass="table-card" blockClass="p-0">
+    <br>
+
+    <div class=" col-md-3" class="input-group"  style="width: 51%;height: 20%;position: relative;left: 3%;">
+      <input  type="search"  style="background-color: #F5F5F5" class="form-control rounded" placeholder="Search Product By SKU,Name,Category..." aria-label="Search" aria-describedby="search-addon" />
+      <button type="button"  class="btn btn-primary b1">search</button>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button type="button" class="btn btn-icon btn-primary"><i class="feather icon-rotate-cw" ></i></button>
+      <button   style="float: right;position: relative;left: 87%;border-radius: 7%"type="button"  routerLink="/products/product-create" class="btn btn-primary b2"  >New Packaging</button>
+
+    </div>
+
+
+    <hr>
+    <br>
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+        <tr>
+          <th>
+            Packaging
+          </th>
+          <th>Created At</th>
+          <th>Order</th>
+          <th>Number of Packages</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of packages index as i ">
+          <td>
+            <div class="d-inline-block align-middle">
+              <div class="d-inline-block">
+                <h6>{{p.code}}</h6>
+              </div>
+            </div>
+          </td>
+          <td>{{p.createdAt | date: 'dd/MM/yyyy hh:mm a'}}</td>
+          <td>{{p.order.code}} </td>
+          <td >{{packagingNumOfPackages[p.id]}}</td>
+          <td *ngIf="p.status=='PREPARED'"><label class="badge badge-light-danger">PREPARED</label></td>
+          <td *ngIf="p.status=='SHIPPED'"><label class="badge badge-light-warning">SHIPPED</label></td>
+          <td *ngIf="p.status=='DELIVERED'"><label class="badge badge-light-success">DELIVERED</label></td>
+
+
+
+
+
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
+
+

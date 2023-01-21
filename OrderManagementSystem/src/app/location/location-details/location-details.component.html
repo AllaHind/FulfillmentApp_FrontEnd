@@ -1,0 +1,104 @@
+<div class="col-xl-12 col-md-3" ngbDropdown style="position: relative;bottom: 100px">
+  <button  (click)="goBack()" style="position: relative;top: 10px;right: 20px;border-radius: 60px;" class="btn btn-primary  previous-btn">  <i  class="fa fa-arrow-circle-left"></i></button>
+
+  <app-card cardTitle="&nbsp; &nbsp; Location Details " [options]="false">
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Code</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+             <h4>{{location.code}}</h4>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">AILS</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{location.ails}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Rack</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{location.rack}}
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Shelf</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{location.shelf}}           </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Bin</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{location.bin}}
+            </div>
+          </div>
+          <hr>
+
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Status</h6>
+            </div>
+            <div *ngIf="location.taken==true"  >
+              <label class="badge badge-light-danger">Taken</label>
+            </div>
+            <div *ngIf="location.taken==false"  >
+              <label class="badge badge-light-success">Empty</label>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Product</h6>
+            </div>
+            <div class="col-sm-9 text-secondary" >
+              <a  *ngIf="location.product!=null" href="/products/product-details/{{location.product.sku}} ">  {{location.product.sku}}</a>
+            </div>
+            <div class="col-sm-9 text-secondary" *ngIf="location.product==null" >
+
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">BarCode</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <ejs-barcodegenerator style="display: block;"  #barcode id="barcode" width="120px" height="100px" mode="SVG" type="Codabar" value="{{location.code}}"></ejs-barcodegenerator>
+
+            </div>
+          </div>
+
+
+</div>
+        </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <a class="btn btn-info " routerLink="/products/product-create">Edit</a>
+              &nbsp; &nbsp;
+              <a class="btn btn-danger " >DELETE</a>
+
+            </div>
+          </div>
+        </div>
+
+  </app-card>
+</div>

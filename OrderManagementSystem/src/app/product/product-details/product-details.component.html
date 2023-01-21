@@ -1,0 +1,125 @@
+<div class="col-xl-12 col-md-3" ngbDropdown style="position: relative;bottom: 100px">
+  <button  (click)="goBack()" style="position: relative;top: 10px;right: 20px;border-radius: 60px;" class="btn btn-primary  previous-btn">  <i  class="fa fa-arrow-circle-left"></i></button>
+
+  <app-card cardTitle="&nbsp; &nbsp; Product Details " [options]="false">
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">SKU</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              <h4>{{product.sku}}</h4>
+
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+  {{product.name}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Category</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.category.label}}
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Cost Price </h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.costPrice}} <b> MAD</b>            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Selling Price </h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.sellingPrice}} <b> MAD</b>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Weight</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.weight}} <b> g </b>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Volume</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.volume}} <b> cm3</b>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Stock Quantity</h6>
+            </div>
+            <div *ngIf="product.stockQuantity<=product.supplyLevel" class="col-sm-9 text-danger font-weight-bold">
+              {{product.stockQuantity}}
+            </div>
+            <div *ngIf="product.stockQuantity>product.supplyLevel" class="col-sm-9 text-secondary" >
+              {{product.stockQuantity}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Supply Level</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{product.supplyLevel}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Status</h6>
+            </div>
+            <div *ngIf="product.status=='OUT_OF_STOCK'"  >
+              <label class="badge badge-light-danger">Out Of Stock</label>
+            </div>
+            <div *ngIf="product.status=='IN_STOCK'"  >
+              <label class="badge badge-light-success">In Stock</label>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">BarCode</h6>
+            </div>
+            <ejs-barcodegenerator style="display: block;"  #barcode id="barcode" width="120px" height="100px" mode="SVG" type="Codabar" value="{{product.sku}}"></ejs-barcodegenerator>
+
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <a class="btn btn-info " routerLink="/products/product-create">Edit</a>
+              &nbsp; &nbsp;
+              <a class="btn btn-danger " >DELETE</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-card>
+</div>

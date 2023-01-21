@@ -1,0 +1,72 @@
+<div class="col-xl-12 col-md-3" ngbDropdown>
+  <app-card cardTitle="Locations" cardClass="table-card" blockClass="p-0">
+    <br>
+
+    <div class=" col-md-3" class="input-group" style="width: 51%;height: 20%;position: relative;left: 3%;">
+      <input type="search" style="background-color: #F5F5F5" class="form-control rounded"
+             placeholder="Search Location By Code,Status" aria-label="Search" aria-describedby="search-addon"/>
+      <button type="button" class="btn btn-primary b1">search</button>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button type="button" class="btn btn-icon btn-primary"><i class="feather icon-rotate-cw"></i></button>
+      <button style="float: right;position: relative;left: 87%;border-radius: 7%" type="button"
+              routerLink="/location/location-create" class="btn btn-primary b2">New Location
+      </button>
+
+    </div>
+
+
+    <hr>
+    <br>
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+        <tr>
+          <th>Bin Location</th>
+          <th>Ails</th>
+          <th>Rack</th>
+          <th>Shelf</th>
+          <th>Bin</th>
+          <th>Barcode</th>
+          <th>Status</th>
+          <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let l of locations index as i ">
+          <td>
+            <div class="d-inline-block align-middle">
+              <div class="d-inline-block">
+                <h6>{{l.code}}</h6>
+              </div>
+            </div>
+          </td>
+          <td>{{l.ails}} </td>
+          <td>{{l.rack}}</td>
+          <td>{{l.shelf}}</td>
+          <td>{{l.bin}}</td>
+          <td><ejs-barcodegenerator style="display: block;"  #barcode id="barcode" width="120px" height="100px" mode="SVG" type="Codabar" value="{{l.code}}"></ejs-barcodegenerator></td>
+          <td  *ngIf="l.taken==true"><label class="badge badge-light-danger">Taken</label></td>
+          <td   *ngIf="l.taken==false"><label class="badge badge-light-success">Empty</label>
+
+          </td>
+
+          <td>
+            <button type="button"  (click)="delete(l.id,i)" class="btn btn-icon btn-outline-danger"><i
+              class="feather icon-trash"  title="Delete"></i></button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-icon btn-outline-warning"><i
+              class="feather icon-edit " title="Edit"></i></button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button"(click)="detail(l.code)" class="btn btn-icon btn-outline-success"><i
+              class="feather icon-zoom-in" title="Details"></i></button>
+
+          </td>
+
+
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
+
+

@@ -1,0 +1,168 @@
+<div class="col-xl-12 col-md-3" ngbDropdown>
+  <app-card cardTitle="Orders" cardClass="table-card" blockClass="p-0">
+    <br>
+
+    <div class=" col-md-3" class="input-group"  style="width: 51%;height: 20%;position: relative;left: 3%;">
+      <input  type="search"  style="background-color: #F5F5F5" class="form-control rounded" placeholder="Search Order By Code,Customer,Date..." aria-label="Search" aria-describedby="search-addon" />
+      <button type="button"  class="btn btn-primary b1">search</button>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button type="button" class="btn btn-icon btn-primary"><i class="feather icon-rotate-cw" ></i></button>
+
+    </div>
+
+
+    <hr>
+    <br>
+    <div class="col-sm-12">
+        <ngb-tabset>
+          <ngb-tab title="ALL ORDERS">
+            <ng-template ngbTabContent>
+              <app-card [hidHeader]="true" cardClass="tab-card">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0" id="htmlData">
+                    <thead>
+                    <tr>
+                      <th>
+                        Order°
+                      </th>
+                      <th>Customer</th>
+                      <th>Order date</th>
+                      <th>Total Price</th>
+                      <th>Status</th>
+                      <th>Last Action</th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let o of orders index as i ">
+                      <td>
+                        <div class="d-inline-block align-middle">
+                          <div class="d-inline-block">
+                            <h6>{{o.code}} </h6>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{o.customer.code}}</td>
+                      <td>{{o.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                      <td>{{o.totalPrice}} <b>MAD</b></td>
+                      <td *ngIf="o.status=='PENDING'"><label class="badge badge-light-warning">PENDING</label></td>
+                      <td *ngIf="o.status=='READY_TO_SHIP'"><label class="badge badge-light-info">READY TO SHIP</label></td>
+                      <td *ngIf="o.status=='DELIVERED'"><label class="badge badge-light-success">DELIVERED</label></td>
+                      <td *ngIf="o.status=='SHIPPED'"><label class="badge badge-light-danger">SHIPPED</label></td>
+
+  <td *ngIf="o.status!='PENDING'">{{o.user.username}}</td>
+                      <td *ngIf="o.status=='PENDING'">-------</td>
+                      <td>
+                        &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-success" (click)="detail(o.code)"><i class="feather icon-zoom-in" title="Details"></i></button>
+
+                      </td>
+
+
+                    </tbody>
+                  </table>
+                </div>
+
+              </app-card>
+
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="PENDING ORDERS">
+            <ng-template ngbTabContent>
+              <app-card [hidHeader]="true" cardClass="tab-card">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                    <tr>
+                      <th>
+                        Order°
+                      </th>
+                      <th>Customer</th>
+                      <th>Order date</th>
+                      <th>Total Price</th>
+                      <th>Status</th>
+                      <th></th>
+                      <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ng-container *ngFor="let o of orders index as i ">
+                    <tr  *ngIf="o.status == 'PENDING'">
+                      <td>
+                        <div class="d-inline-block align-middle">
+                          <div class="d-inline-block">
+                            <h6>{{o.code}} </h6>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{o.customer.code}}</td>
+                      <td>{{o.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                      <td>{{o.totalPrice}} <b>MAD</b></td>
+                      <td *ngIf="o.status=='PENDING'"><label class="badge badge-light-warning">Pending</label></td>
+                      <td>
+                        &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-success" (click)="detail(o.code)"><i class="feather icon-zoom-in" title="Details"></i></button>
+
+                      </td>
+                    </tr>
+                    </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+
+              </app-card>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="READY TO SHIP ORDERS">
+            <ng-template ngbTabContent>
+              <app-card [hidHeader]="true" cardClass="tab-card">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                    <tr>
+                      <th>
+                        Order°
+                      </th>
+                      <th>Customer</th>
+                      <th>Order date</th>
+                      <th>Total Price</th>
+                      <th>codebar</th>
+                      <th>Status</th>
+                      <th></th>
+                      <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ng-container *ngFor="let o of orders index as i ">
+                    <tr  *ngIf="o.status == 'READY_TO_SHIP'">
+                      <td>
+                        <div class="d-inline-block align-middle">
+                          <div class="d-inline-block">
+                            <h6>{{o.code}} </h6>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{o.customer.code}}</td>
+                      <td>{{o.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                      <td>{{o.totalPrice}} <b>MAD</b></td>
+                      <td *ngIf="o.status=='READY_TO_SHIP'"><label class="badge badge-light-info">READY TO SHIP</label></td>
+
+                      <td>
+                        &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-success" (click)="detail(o.code)"><i class="feather icon-zoom-in" title="Details"></i></button>
+
+                      </td>
+                    </tr>
+                    </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+
+              </app-card>
+            </ng-template>
+          </ngb-tab>
+
+
+        </ngb-tabset>
+    </div>
+  </app-card>
+</div>
+
+

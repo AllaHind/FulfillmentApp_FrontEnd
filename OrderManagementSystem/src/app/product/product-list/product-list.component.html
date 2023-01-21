@@ -1,0 +1,62 @@
+<div class="col-xl-12 col-md-3" ngbDropdown>
+  <app-card cardTitle="Products" cardClass="table-card" blockClass="p-0">
+    <br>
+
+    <div class=" col-md-3" class="input-group"  style="width: 51%;height: 20%;position: relative;left: 3%;">
+      <input [(ngModel)]="x" type="search"  style="background-color: #F5F5F5" class="form-control rounded" placeholder="Search Product By SKU,Name,Category..." aria-label="Search" aria-describedby="search-addon" />
+      <button type="button"  class="btn btn-primary b1" (click)="productService.findByAttributes(this.x)">search</button>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button type="button" class="btn btn-icon btn-primary" (click)="findProducts()"><i class="feather icon-rotate-cw" ></i></button>
+      <button   style="float: right;position: relative;left: 87%;border-radius: 7%"type="button"  routerLink="/products/product-create" class="btn btn-primary b2"  >New Product</button>
+
+    </div>
+
+
+<hr>
+    <br>
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+        <tr>
+          <th>
+            Product SKU
+          </th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th class="text-right">Price</th>
+          <th class="text-right">Status</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of products index as i ">
+          <td>
+            <div class="d-inline-block align-middle">
+              <div class="d-inline-block">
+                <h6>{{p.sku}}</h6>
+              </div>
+            </div>
+          </td>
+          <td>{{p.name}} </td>
+          <td>{{p.category.label}}</td>
+          <td>{{p.stockQuantity}}</td>
+          <td class="text-right">{{p.costPrice}} <b> MAD</b></td>
+
+          <td *ngIf="p.status=='OUT_OF_STOCK'" class="text-right"><label class="badge badge-light-danger">Out Of Stock</label>          </td>
+          <td *ngIf="p.status=='IN_STOCK'" class="text-right"><label class="badge badge-light-success">In Stock</label>          </td>
+
+         <td> <button type="button" (click)="delete(p.id,i)" class="btn btn-icon btn-outline-danger"><i class="feather icon-trash" title="Delete"></i></button>
+           &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-warning" (click)="update(i,p)"><i class="feather icon-edit " title="Edit"></i></button>
+           &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-icon btn-outline-success" (click)="detail(p.sku)"><i class="feather icon-zoom-in" title="Details"></i></button>
+
+         </td>
+
+
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
+
+

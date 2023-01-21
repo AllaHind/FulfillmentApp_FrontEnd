@@ -1,0 +1,99 @@
+  <!-- site Analytics card start -->
+    <div class="row">
+      <div class="col-xl">
+        <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-green">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h4 class="text-c-green">DOLIPRANE 100MG</h4></div>
+            <div class="col-4 text-right">
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <p class="text-white m-b-0">Most ordered Product</p>
+              </div>
+              <div class="col-3 text-right">
+                <i class="feather icon-trending-up text-white f-16"></i>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+
+
+    </div>
+    <div class="row">
+      <div class="col-xl">
+        <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-yellow">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h4 class="text-c-yellow">{{orderService.nbr}}</h4>
+              <h6 class="text-muted m-b-0">Orders</h6>
+            </div>
+            <div class="col-4 text-right">
+              <i class="feather icon-shopping-cart f-28"></i>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <p class="text-white m-b-0">Pending</p>
+              </div>
+              <div class="col-3 text-right">
+                <i class="feather icon-clock text-white f-16"></i>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+      <div class="col-xl">
+        <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-red">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h4 class="text-c-red">{{this.productService.nbr}}</h4>
+              <h6 class="text-muted m-b-0" *ngIf="this.productService.nbr<=1" >Product</h6>
+              <h6 class="text-muted m-b-0" *ngIf="this.productService.nbr>1">Products</h6>
+            </div>
+            <div class="col-4 text-right">
+              <i class="feather icon-inbox f-28"></i>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <p class="text-white m-b-0">Out of Stock</p>
+              </div>
+              <div class="col-3 text-right">
+                <i class="feather icon-trending-down text-white f-16"></i>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+      <div class="col-xl">
+        <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-blue">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h4 class="text-c-blue">{{this.locationService.count}}</h4>
+              <h6 class="text-muted m-b-0" *ngIf="this.locationService.count<=1">Location</h6>
+              <h6 class="text-muted m-b-0" *ngIf="this.locationService.count>1">Locations</h6>
+            </div>
+            <div class="col-4 text-right">
+
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col-9">
+                <p class="text-white m-b-0">Taken</p>
+              </div>
+              <div class="col-3 text-right">
+                <i class="feather icon-trending-down text-white f-16"></i>
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+    </div>
+
