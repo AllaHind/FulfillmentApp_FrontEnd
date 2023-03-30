@@ -42,6 +42,7 @@ https://github.com/coreybutler/nvm-windows/releases/download/1.1.10/nvm-setup.ex
 
 8 - To run this project , u need to use node js version 14
 > nvm install 14.20.0
+
 > nvm use 14.20.0
 
 9- 
